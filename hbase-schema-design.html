@@ -28,12 +28,12 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">HBase Schema设计</h1><p class="date">Created: 2019-10-16 Wed 18:44</p>
+<section id="sec-title-slide"><h1 class="title">HBase Schema设计</h1><p class="date">Created: 2019-10-16 Wed 18:45</p>
 </section>
 
 <section>
-<section id="slide-org4ebb34c">
-<h2 id="org4ebb34c"><span class="section-number-2">1</span> 提纲</h2>
+<section id="slide-orge2fd3cb">
+<h2 id="orge2fd3cb"><span class="section-number-2">1</span> 提纲</h2>
 <ul>
 <li>HBase架构介绍<br /></li>
 <li>Schema 设计<br /></li>
@@ -45,8 +45,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org28402fd">
-<h2 id="org28402fd"><span class="section-number-2">2</span> 概要</h2>
+<section id="slide-org8cf3334">
+<h2 id="org8cf3334"><span class="section-number-2">2</span> 概要</h2>
 <ul>
 <li>Schema设计至关重要<br /></li>
 <li>而且必做不可<br /></li>
@@ -58,8 +58,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgee52272">
-<h2 id="orgee52272"><span class="section-number-2">3</span> 配置层次</h2>
+<section id="slide-org4e8ed02">
+<h2 id="org4e8ed02"><span class="section-number-2">3</span> 配置层次</h2>
 
 <div class="figure">
 <p><img src="./images/hb-osi.jpg" alt="hb-osi.jpg" /><br />
@@ -69,8 +69,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orge527745">
-<h2 id="orge527745"><span class="section-number-2">4</span> HBase架构</h2>
+<section id="slide-org37ac9e0">
+<h2 id="org37ac9e0"><span class="section-number-2">4</span> HBase架构</h2>
 
 <div class="figure">
 <p><img src="./images/hb-arch.jpg" alt="hb-arch.jpg" /><br />
@@ -80,8 +80,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org15fa81e">
-<h2 id="org15fa81e"><span class="section-number-2">5</span> HBase架构</h2>
+<section id="slide-org95533a9">
+<h2 id="org95533a9"><span class="section-number-2">5</span> HBase架构</h2>
 <ul>
 <li>HBase使用HDFS作为可靠存储层<br />
 <ul>
@@ -103,8 +103,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org919a370">
-<h2 id="org919a370"><span class="section-number-2">6</span> 自动分片(Auto Sharding)</h2>
+<section id="slide-orgd5203a9">
+<h2 id="orgd5203a9"><span class="section-number-2">6</span> 自动分片(Auto Sharding)</h2>
 
 <div class="figure">
 <p><img src="./images/hb-auto-sharding.jpg" alt="hb-auto-sharding.jpg" /><br />
@@ -114,8 +114,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgce2561d">
-<h2 id="orgce2561d"><span class="section-number-2">7</span> 分布</h2>
+<section id="slide-org30779e5">
+<h2 id="org30779e5"><span class="section-number-2">7</span> 分布</h2>
 
 <div class="figure">
 <p><img src="./images/hb-distribution.jpg" alt="hb-distribution.jpg" /><br />
@@ -125,8 +125,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org500a4bf">
-<h2 id="org500a4bf"><span class="section-number-2">8</span> 自动分片和分布</h2>
+<section id="slide-org3d00e11">
+<h2 id="org3d00e11"><span class="section-number-2">8</span> 自动分片和分布</h2>
 <ul>
 <li>HBase以Region做为扩展单位<br /></li>
 <li>行是已排序，连续范围的<br /></li>
@@ -140,8 +140,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgb3a71c1">
-<h2 id="orgb3a71c1"><span class="section-number-2">9</span> 列族(Column Families)</h2>
+<section id="slide-org31ef97e">
+<h2 id="org31ef97e"><span class="section-number-2">9</span> 列族(Column Families)</h2>
 
 <div class="figure">
 <p><img src="./images/hb-cf.jpg" alt="hb-cf.jpg" /><br />
@@ -151,8 +151,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org09e2ec8">
-<h2 id="org09e2ec8"><span class="section-number-2">10</span> 存储分离</h2>
+<section id="slide-org885986c">
+<h2 id="org885986c"><span class="section-number-2">10</span> 存储分离</h2>
 <ul>
 <li>列族允许数据分离<br />
 <ul>
@@ -168,8 +168,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org118e459">
-<h2 id="org118e459"><span class="section-number-2">11</span> 布隆过滤器(Bloom Filter)</h2>
+<section id="slide-org82a67da">
+<h2 id="org82a67da"><span class="section-number-2">11</span> 布隆过滤器(Bloom Filter)</h2>
 <ul>
 <li>布隆过滤器在HFile持久化的时候生成<br />
 <ul>
@@ -187,7 +187,7 @@
 
 </ul>
 </section>
-<section id="slide-org118e459-split">
+<section id="slide-org82a67da-split">
 
 <h2><span class="section-number-2">11</span> 布隆过滤器(Bloom Filter)</h2>
 
@@ -199,15 +199,15 @@
 </section>
 </section>
 <section>
-<section id="slide-org94a86ad">
-<h2 id="org94a86ad"><span class="section-number-2">12</span> Key 基数</h2>
+<section id="slide-orge235b42">
+<h2 id="orge235b42"><span class="section-number-2">12</span> Key 基数</h2>
 
 <div class="figure">
 <p><img src="./images/hb-key-cardinality.jpg" alt="hb-key-cardinality.jpg" /><br />
 </p>
 </div>
 </section>
-<section id="slide-org94a86ad-split">
+<section id="slide-orge235b42-split">
 
 <h2><span class="section-number-2">12</span> Key 基数</h2>
 <ul>
@@ -229,15 +229,15 @@
 </section>
 </section>
 <section>
-<section id="slide-org2b9ca9f">
-<h2 id="org2b9ca9f"><span class="section-number-2">13</span> 折叠，存储和移位</h2>
+<section id="slide-org5c7c59a">
+<h2 id="org5c7c59a"><span class="section-number-2">13</span> 折叠，存储和移位</h2>
 
 <div class="figure">
 <p><img src="./images/hb-fold-store-shift.jpg" alt="hb-fold-store-shift.jpg" /><br />
 </p>
 </div>
 </section>
-<section id="slide-org2b9ca9f-split">
+<section id="slide-org5c7c59a-split">
 
 <h2><span class="section-number-2">13</span> 折叠，存储和移位</h2>
 
@@ -254,8 +254,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orge0641d1">
-<h2 id="orge0641d1"><span class="section-number-2">14</span> Key/Table 设计</h2>
+<section id="slide-org88c6cb5">
+<h2 id="org88c6cb5"><span class="section-number-2">14</span> Key/Table 设计</h2>
 <ul>
 <li>获得最佳性能至关重要<br />
 <ul>
@@ -274,8 +274,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgbedbb93">
-<h2 id="orgbedbb93"><span class="section-number-2">15</span> DDI</h2>
+<section id="slide-org27f196e">
+<h2 id="org27f196e"><span class="section-number-2">15</span> DDI</h2>
 <ul>
 <li>代表Denormalization, Duplication and Intelligent Keys<br /></li>
 <li>需要克服架构的短板<br /></li>
@@ -288,8 +288,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgcb8c632">
-<h2 id="orgcb8c632"><span class="section-number-2">16</span> 预物化 Everything</h2>
+<section id="slide-orge01aa09">
+<h2 id="orge01aa09"><span class="section-number-2">16</span> 预物化 Everything</h2>
 <ul>
 <li>尽可能保证一个客户请求读取一次<br /></li>
 <li>如果不行的话也保证最低的次数<br /></li>
@@ -303,8 +303,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org79ed117">
-<h2 id="org79ed117"><span class="section-number-2">17</span> 高条 vs 平宽表</h2>
+<section id="slide-org620add6">
+<h2 id="org620add6"><span class="section-number-2">17</span> 高条 vs 平宽表</h2>
 <ul>
 <li>行不可分割<br />
 <ul>
@@ -329,8 +329,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org32ee662">
-<h2 id="org32ee662"><span class="section-number-2">18</span> 示例： Mail Inbox</h2>
+<section id="slide-orgb228193">
+<h2 id="orgb228193"><span class="section-number-2">18</span> 示例： Mail Inbox</h2>
 
 <div class="figure">
 <p><img src="./images/hb-example-mail-box.jpg" alt="hb-example-mail-box.jpg" /><br />
@@ -340,8 +340,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgae9db3d">
-<h2 id="orgae9db3d"><span class="section-number-2">19</span> Partial Key Scans</h2>
+<section id="slide-orgdd72671">
+<h2 id="orgdd72671"><span class="section-number-2">19</span> Partial Key Scans</h2>
 
 <div class="figure">
 <p><img src="./images/hb-partial-key-scans.jpg" alt="hb-partial-key-scans.jpg" /><br />
@@ -351,8 +351,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org6320ba7">
-<h2 id="org6320ba7"><span class="section-number-2">20</span> Sequential Keys</h2>
+<section id="slide-orge62d859">
+<h2 id="orge62d859"><span class="section-number-2">20</span> Sequential Keys</h2>
 <p>
 &lt;timestamp&gt;&lt;more key&gt;: {CF: {CQ: {TS : Val}}}<br />
 </p>
@@ -384,8 +384,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgfcfd3ab">
-<h2 id="orgfcfd3ab"><span class="section-number-2">21</span> 盐化</h2>
+<section id="slide-orgf8ddaa0">
+<h2 id="orgf8ddaa0"><span class="section-number-2">21</span> 盐化</h2>
 <ul>
 <li>对row keys添加前缀来离散化<br /></li>
 <li>使用通用的或数字前缀<br /></li>
@@ -405,8 +405,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgb4a1baf">
-<h2 id="orgb4a1baf"><span class="section-number-2">22</span> Hashing vs. Sequential Keys</h2>
+<section id="slide-org30b7f72">
+<h2 id="org30b7f72"><span class="section-number-2">22</span> Hashing vs. Sequential Keys</h2>
 <ul>
 <li>使用hash达到最佳分布<br />
 <ul>
@@ -431,8 +431,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org196ec94">
-<h2 id="org196ec94"><span class="section-number-2">23</span> Key 设计</h2>
+<section id="slide-orgb11ad73">
+<h2 id="orgb11ad73"><span class="section-number-2">23</span> Key 设计</h2>
 
 <div class="figure">
 <p><img src="./images/hb-key-degign.jpg" alt="hb-key-degign.jpg" /><br />
@@ -442,8 +442,8 @@
 </section>
 </section>
 <section>
-<section id="slide-orgc4518d3">
-<h2 id="orgc4518d3"><span class="section-number-2">24</span> Key设计总结</h2>
+<section id="slide-orga06b651">
+<h2 id="orga06b651"><span class="section-number-2">24</span> Key设计总结</h2>
 <ul>
 <li>根据访问模式，选择顺序key或随机key<br /></li>
 <li>常常需要将两者结合使用<br />
@@ -463,8 +463,8 @@
 </section>
 </section>
 <section>
-<section id="slide-org5e96b7f">
-<h2 id="org5e96b7f"><span class="section-number-2">25</span> Key 设计</h2>
+<section id="slide-org5ad033e">
+<h2 id="org5ad033e"><span class="section-number-2">25</span> Key 设计</h2>
 <ul>
 <li>反向域名(Reversed Domains)<br />
 <ul>
@@ -491,8 +491,8 @@ MD5(Reversed Domain) + Reversed Domain + URL ID<br />
 </section>
 </section>
 <section>
-<section id="slide-orgaf2191d">
-<h2 id="orgaf2191d"><span class="section-number-2">26</span> 总结</h2>
+<section id="slide-org5670fcd">
+<h2 id="org5670fcd"><span class="section-number-2">26</span> 总结</h2>
 <ul>
 <li>根据使用场景来设计<br />
 — 读， 写，还是两者都有？<br /></li>
@@ -508,12 +508,12 @@ MD5(Reversed Domain) + Reversed Domain + URL ID<br />
 
 </ul>
 </section>
-<section id="slide-orgaf2191d-split">
+<section id="slide-org5670fcd-split">
 
 <h2><span class="section-number-2">26</span> 总结</h2>
 
 <ul>
-<li>Schema设计是一下各项的组合：<br />
+<li>Schema设计是以下各项的组合：<br />
 <ul>
 <li>键(keys)的设计(行 和 列)<br /></li>
 <li>按列族分离数据<br /></li>
@@ -532,8 +532,8 @@ MD5(Reversed Domain) + Reversed Domain + URL ID<br />
 </section>
 </section>
 <section>
-<section id="slide-orgd8d8d65">
-<h2 id="orgd8d8d65"><span class="section-number-2">27</span> THANKS</h2>
+<section id="slide-orgb67ad9e">
+<h2 id="orgb67ad9e"><span class="section-number-2">27</span> THANKS</h2>
 </section>
 </section>
 </div>
