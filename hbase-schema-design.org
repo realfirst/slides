@@ -4,6 +4,8 @@
 
 #+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
 #+OPTIONS: toc:nil
+#+OPTIONS: ^:nil
+#+OPTIONS: \n:t
 #+OPTIONS: author:nil
 #+OPTIONS: date:nil
 #+REVEAL_THEME: moon
@@ -154,14 +156,14 @@
 - 使用通用的或数字前缀
 - 使用取模操作让row keys在各regionServers间分布
 - 强制将共性数据相互靠近，方便scaning 或 Mapreduce处理
-0_rowkey1, 1_rowkey2, 2_rowkey3
-0_rowkey4, 1_rowkey5, 2_rowkey6
+  0_rowkey1, 1_rowkey2, 2_rowkey3
+  0_rowkey4, 1_rowkey5, 2_rowkey6
 - 先按prefix排序
-0_rowkey1
-0_rowkey4
-1_rowkey2
-1_rowkey5
-...
+  0_rowkey1
+  0_rowkey4
+  1_rowkey2
+  1_rowkey5
+  ...
 
 * Hashing vs. Sequential Keys
 - 使用hash达到最佳分布
@@ -214,3 +216,6 @@
 - 大多数系统需要类似的技术来扩展
   - 加索引，数据分区，一致性哈希
 - DenormalizaFon, DuplicaFon, and Intelligent Keys (DDI)
+
+* THANKS
+

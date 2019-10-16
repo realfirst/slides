@@ -28,73 +28,73 @@
 <body>
 <div class="reveal">
 <div class="slides">
-<section id="sec-title-slide"><h1 class="title">HBase Schema设计</h1><p class="date">Created: 2019-10-16 Wed 18:13</p>
+<section id="sec-title-slide"><h1 class="title">HBase Schema设计</h1><p class="date">Created: 2019-10-16 Wed 18:38</p>
 </section>
 
 <section>
-<section id="slide-org62e9250">
-<h2 id="org62e9250"><span class="section-number-2">1</span> 提纲</h2>
+<section id="slide-orgb792ff1">
+<h2 id="orgb792ff1"><span class="section-number-2">1</span> 提纲</h2>
 <ul>
-<li>HBase架构介绍</li>
-<li>Schema 设计</li>
-<li>示例</li>
-<li>总结</li>
+<li>HBase架构介绍<br /></li>
+<li>Schema 设计<br /></li>
+<li>示例<br /></li>
+<li>总结<br /></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org4e9056c">
-<h2 id="org4e9056c"><span class="section-number-2">2</span> 概要</h2>
+<section id="slide-org6a18c76">
+<h2 id="org6a18c76"><span class="section-number-2">2</span> 概要</h2>
 <ul>
-<li>Schema设计至关重要</li>
-<li>而且必做不可</li>
-<li>体现HBase系统架构和实现的“特性”</li>
-<li>与存储层密切关联</li>
+<li>Schema设计至关重要<br /></li>
+<li>而且必做不可<br /></li>
+<li>体现HBase系统架构和实现的“特性”<br /></li>
+<li>与存储层密切关联<br /></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org07390a3">
-<h2 id="org07390a3"><span class="section-number-2">3</span> 配置层次</h2>
+<section id="slide-org278cb98">
+<h2 id="org278cb98"><span class="section-number-2">3</span> 配置层次</h2>
 
 <div class="figure">
-<p><img src="./images/hb-osi.jpg" alt="hb-osi.jpg" />
+<p><img src="./images/hb-osi.jpg" alt="hb-osi.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org2eb47ec">
-<h2 id="org2eb47ec"><span class="section-number-2">4</span> HBase架构</h2>
+<section id="slide-org6368e10">
+<h2 id="org6368e10"><span class="section-number-2">4</span> HBase架构</h2>
 
 <div class="figure">
-<p><img src="./images/hb-arch.jpg" alt="hb-arch.jpg" />
+<p><img src="./images/hb-arch.jpg" alt="hb-arch.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgc277a67">
-<h2 id="orgc277a67"><span class="section-number-2">5</span> HBase架构</h2>
+<section id="slide-org3b36be2">
+<h2 id="org3b36be2"><span class="section-number-2">5</span> HBase架构</h2>
 <ul>
-<li>HBase使用HDFS作为可靠存储层
+<li>HBase使用HDFS作为可靠存储层<br />
 <ul>
-<li>处理校验和，多份冗余，故障恢复</li>
+<li>处理校验和，多份冗余，故障恢复<br /></li>
 
 </ul></li>
-<li>支持原生Java API，REST，Thrift, Avro网关</li>
-<li>Master 管理集群</li>
-<li>RegionServer 管理数据</li>
-<li>Zookeeper作为中枢神经系统
+<li>支持原生Java API，REST，Thrift, Avro网关<br /></li>
+<li>Master 管理集群<br /></li>
+<li>RegionServer 管理数据<br /></li>
+<li>Zookeeper作为中枢神经系统<br />
 <ul>
-<li>HBase至关重要</li>
-<li>引导并协调集群</li>
+<li>HBase至关重要<br /></li>
+<li>引导并协调集群<br /></li>
 
 </ul></li>
 
@@ -103,124 +103,124 @@
 </section>
 </section>
 <section>
-<section id="slide-orgbcc8896">
-<h2 id="orgbcc8896"><span class="section-number-2">6</span> 自动分片(Auto Sharding)</h2>
+<section id="slide-org4316819">
+<h2 id="org4316819"><span class="section-number-2">6</span> 自动分片(Auto Sharding)</h2>
 
 <div class="figure">
-<p><img src="./images/hb-auto-sharding.jpg" alt="hb-auto-sharding.jpg" />
+<p><img src="./images/hb-auto-sharding.jpg" alt="hb-auto-sharding.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org6b90121">
-<h2 id="org6b90121"><span class="section-number-2">7</span> 分布</h2>
+<section id="slide-org2619a60">
+<h2 id="org2619a60"><span class="section-number-2">7</span> 分布</h2>
 
 <div class="figure">
-<p><img src="./images/hb-distribution.jpg" alt="hb-distribution.jpg" />
+<p><img src="./images/hb-distribution.jpg" alt="hb-distribution.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org20a24b9">
-<h2 id="org20a24b9"><span class="section-number-2">8</span> 自动分片和分布</h2>
+<section id="slide-orgfc3e5e4">
+<h2 id="orgfc3e5e4"><span class="section-number-2">8</span> 自动分片和分布</h2>
 <ul>
-<li>HBase以Region做为扩展单位</li>
-<li>行是已排序，连续范围的</li>
-<li>在各RegionServer间"随机"分布</li>
-<li>因负载均衡和故障恢复在regionServer间迁移</li>
-<li>随着数据增长通过自动或手动分裂的方式进行扩展</li>
-<li>容量是影响集群节点数与每个节点region个数的唯一因素</li>
+<li>HBase以Region做为扩展单位<br /></li>
+<li>行是已排序，连续范围的<br /></li>
+<li>在各RegionServer间"随机"分布<br /></li>
+<li>因负载均衡和故障恢复在regionServer间迁移<br /></li>
+<li>随着数据增长通过自动或手动分裂的方式进行扩展<br /></li>
+<li>容量是影响集群节点数与每个节点region个数的唯一因素<br /></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-org95ccb28">
-<h2 id="org95ccb28"><span class="section-number-2">9</span> 列族(Column Families)</h2>
+<section id="slide-org4a35005">
+<h2 id="org4a35005"><span class="section-number-2">9</span> 列族(Column Families)</h2>
 
 <div class="figure">
-<p><img src="./images/hb-cf.jpg" alt="hb-cf.jpg" />
+<p><img src="./images/hb-cf.jpg" alt="hb-cf.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgd8cf339">
-<h2 id="orgd8cf339"><span class="section-number-2">10</span> 存储分离</h2>
+<section id="slide-org06f6ce1">
+<h2 id="org06f6ce1"><span class="section-number-2">10</span> 存储分离</h2>
 <ul>
-<li>列族允许数据分离
+<li>列族允许数据分离<br />
 <ul>
-<li>用在列式数据库来做仅列级别的快速分析性查询</li>
-<li>允许依据数据内容类型选取不同的压缩方式</li>
+<li>用在列式数据库来做仅列级别的快速分析性查询<br /></li>
+<li>允许依据数据内容类型选取不同的压缩方式<br /></li>
 
 </ul></li>
-<li>根据访问模式分离信息</li>
-<li>数据存放在一个或多个HFile存储文件(StoreFile)里</li>
+<li>根据访问模式分离信息<br /></li>
+<li>数据存放在一个或多个HFile存储文件(StoreFile)里<br /></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgb9b50fc">
-<h2 id="orgb9b50fc"><span class="section-number-2">11</span> 布隆过滤器(Bloom Filter)</h2>
+<section id="slide-org3d87fbd">
+<h2 id="org3d87fbd"><span class="section-number-2">11</span> 布隆过滤器(Bloom Filter)</h2>
 <ul>
-<li>布隆过滤器在HFile持久化的时候生成
+<li>布隆过滤器在HFile持久化的时候生成<br />
 <ul>
-<li>存放在每个HFile的尾部</li>
-<li>使用内存进行加载</li>
+<li>存放在每个HFile的尾部<br /></li>
+<li>使用内存进行加载<br /></li>
 
 </ul></li>
-<li>允许row或row+column级别的检查</li>
-<li>可以在读的时候过滤掉整个文件
+<li>允许row或row+column级别的检查<br /></li>
+<li>可以在读的时候过滤掉整个文件<br />
 <ul>
-<li>对已分组数据效果显著</li>
+<li>对已分组数据效果显著<br /></li>
 
 </ul></li>
-<li>在大量key不存在的读取场景也很有用</li>
+<li>在大量key不存在的读取场景也很有用<br /></li>
 
 </ul>
 </section>
-<section id="slide-orgb9b50fc-split">
+<section id="slide-org3d87fbd-split">
 
 <h2><span class="section-number-2">11</span> 布隆过滤器(Bloom Filter)</h2>
 
 <div class="figure">
-<p><img src="./images/hb-bloom-filter.jpg" alt="hb-bloom-filter.jpg" />
+<p><img src="./images/hb-bloom-filter.jpg" alt="hb-bloom-filter.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org89ca8b6">
-<h2 id="org89ca8b6"><span class="section-number-2">12</span> Key 基数</h2>
+<section id="slide-org2e52fdf">
+<h2 id="org2e52fdf"><span class="section-number-2">12</span> Key 基数</h2>
 
 <div class="figure">
-<p><img src="./images/hb-key-cardinality.jpg" alt="hb-key-cardinality.jpg" />
+<p><img src="./images/hb-key-cardinality.jpg" alt="hb-key-cardinality.jpg" /><br />
 </p>
 </div>
 </section>
-<section id="slide-org89ca8b6-split">
+<section id="slide-org2e52fdf-split">
 
 <h2><span class="section-number-2">12</span> Key 基数</h2>
 <ul>
-<li>使用行键可获得最佳性能</li>
-<li>限制时间范围的读取可以跳过存储文件
+<li>使用行键可获得最佳性能<br /></li>
+<li>限制时间范围的读取可以跳过存储文件<br />
 <ul>
-<li>布隆过滤器也可以</li>
+<li>布隆过滤器也可以<br /></li>
 
 </ul></li>
-<li>选定列族降低扫描的数据量</li>
-<li>基于纯值的过滤是全表扫描
+<li>选定列族降低扫描的数据量<br /></li>
+<li>基于纯值的过滤是全表扫描<br />
 <ul>
-<li>使用过滤器往往也需要全表扫描，但可降低网络流量</li>
+<li>使用过滤器往往也需要全表扫描，但可降低网络流量<br /></li>
 
 </ul></li>
 
@@ -229,98 +229,43 @@
 </section>
 </section>
 <section>
-<section id="slide-orgee19a4a">
-<h2 id="orgee19a4a"><span class="section-number-2">13</span> 折叠，存储和移位</h2>
+<section id="slide-org44353d6">
+<h2 id="org44353d6"><span class="section-number-2">13</span> 折叠，存储和移位</h2>
 
 <div class="figure">
-<p><img src="./images/hb-fold-store-shift.jpg" alt="hb-fold-store-shift.jpg" />
+<p><img src="./images/hb-fold-store-shift.jpg" alt="hb-fold-store-shift.jpg" /><br />
 </p>
 </div>
 </section>
-<section id="slide-orgee19a4a-split">
+<section id="slide-org44353d6-split">
 
 <h2><span class="section-number-2">13</span> 折叠，存储和移位</h2>
 
 <ul>
-<li>逻辑布局和物理布局不匹配</li>
-<li>所有值通过全坐标系来存储，
-包括： 行键，列族，列修饰符，时间戳</li>
-<li>列被折叠成“行每列”</li>
-<li>NULL无需存储</li>
-<li>在折叠表里多版本对应多行</li>
+<li>逻辑布局和物理布局不匹配<br /></li>
+<li>所有值通过全坐标系来存储，<br />
+包括： 行键，列族，列修饰符，时间戳<br /></li>
+<li>列被折叠成“行每列”<br /></li>
+<li>NULL无需存储<br /></li>
+<li>在折叠表里多版本对应多行<br /></li>
 
 </ul>
 
 </section>
 </section>
 <section>
-<section id="slide-orgefa2f35">
-<h2 id="orgefa2f35"><span class="section-number-2">14</span> Key/Table 设计</h2>
+<section id="slide-orgb6cac9f">
+<h2 id="orgb6cac9f"><span class="section-number-2">14</span> Key/Table 设计</h2>
 <ul>
-<li>获得最佳性能至关重要
+<li>获得最佳性能至关重要<br />
 <ul>
-<li>为什么我需要知道？ 只有在对列建立索引并且查询计划确定后，RDBMS才能正常工作</li>
+<li>为什么我需要知道？ 只有在对列建立索引并且查询计划确定后，RDBMS才能正常工作<br /></li>
 
 </ul></li>
-<li>不支持二级索引，只能使用行键或列名排序</li>
-<li>将多级索引变单级
+<li>不支持二级索引，只能使用行键或列名排序<br /></li>
+<li>将多级索引变单级<br />
 <ul>
-<li>依合理的架构并将数据分散在整个集群里来构造一个大表所以表现很好</li>
-
-</ul></li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org7109efa">
-<h2 id="org7109efa"><span class="section-number-2">15</span> DDI</h2>
-<ul>
-<li>代表Denormalization, Duplication and Intelligent Keys</li>
-<li>需要克服架构的短板</li>
-<li>Denormalization &#x2013;&gt; 替换 JOINS 操作</li>
-<li>Duplication &#x2013;&gt; 为读而设计</li>
-<li>Intelligent Keys &#x2013;&gt; 实现索引和排序，优化读性能</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org7a974c1">
-<h2 id="org7a974c1"><span class="section-number-2">16</span> 预物化 Everything</h2>
-<ul>
-<li>尽可能保证一个客户请求读取一次</li>
-<li>如果不行的话也保证最低的次数</li>
-<li>读耗时在10毫秒(缓存未命中)内和 1毫秒内(缓存命中)</li>
-<li>用MapReduce做计算以批的方式读</li>
-<li>实时存储和合并更新</li>
-<li>座右铭：“为读而设计”</li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org1d7fddb">
-<h2 id="org1d7fddb"><span class="section-number-2">17</span> 高条 vs 平宽表</h2>
-<ul>
-<li>行不可分割
-<ul>
-<li>可能一行占一个region</li>
-
-</ul></li>
-<li>存储印迹相同</li>
-<li>将更多的细节放到row key
-<ul>
-<li>有时仅虚拟列</li>
-<li>利用partial key scan</li>
-
-</ul></li>
-<li>Scan使用高表，Get使用宽表
-<ul>
-<li>仅支持行级原子性</li>
+<li>依合理的架构并将数据分散在整个集群里来构造一个大表所以表现很好<br /></li>
 
 </ul></li>
 
@@ -329,51 +274,106 @@
 </section>
 </section>
 <section>
-<section id="slide-org0f7b3f2">
-<h2 id="org0f7b3f2"><span class="section-number-2">18</span> 示例： Mail Inbox</h2>
+<section id="slide-org0c35083">
+<h2 id="org0c35083"><span class="section-number-2">15</span> DDI</h2>
+<ul>
+<li>代表Denormalization, Duplication and Intelligent Keys<br /></li>
+<li>需要克服架构的短板<br /></li>
+<li>Denormalization &#x2013;&gt; 替换 JOINS 操作<br /></li>
+<li>Duplication &#x2013;&gt; 为读而设计<br /></li>
+<li>Intelligent Keys &#x2013;&gt; 实现索引和排序，优化读性能<br /></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd5cdea1">
+<h2 id="orgd5cdea1"><span class="section-number-2">16</span> 预物化 Everything</h2>
+<ul>
+<li>尽可能保证一个客户请求读取一次<br /></li>
+<li>如果不行的话也保证最低的次数<br /></li>
+<li>读耗时在10毫秒(缓存未命中)内和 1毫秒内(缓存命中)<br /></li>
+<li>用MapReduce做计算以批的方式读<br /></li>
+<li>实时存储和合并更新<br /></li>
+<li>座右铭：“为读而设计”<br /></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgb88716d">
+<h2 id="orgb88716d"><span class="section-number-2">17</span> 高条 vs 平宽表</h2>
+<ul>
+<li>行不可分割<br />
+<ul>
+<li>可能一行占一个region<br /></li>
+
+</ul></li>
+<li>存储印迹相同<br /></li>
+<li>将更多的细节放到row key<br />
+<ul>
+<li>有时仅虚拟列<br /></li>
+<li>利用partial key scan<br /></li>
+
+</ul></li>
+<li>Scan使用高表，Get使用宽表<br />
+<ul>
+<li>仅支持行级原子性<br /></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgd0ed9a3">
+<h2 id="orgd0ed9a3"><span class="section-number-2">18</span> 示例： Mail Inbox</h2>
 
 <div class="figure">
-<p><img src="./images/hb-example-mail-box.jpg" alt="hb-example-mail-box.jpg" />
+<p><img src="./images/hb-example-mail-box.jpg" alt="hb-example-mail-box.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgf7d4673">
-<h2 id="orgf7d4673"><span class="section-number-2">19</span> Partial Key Scans</h2>
+<section id="slide-orga034e84">
+<h2 id="orga034e84"><span class="section-number-2">19</span> Partial Key Scans</h2>
 
 <div class="figure">
-<p><img src="./images/hb-partial-key-scans.jpg" alt="hb-partial-key-scans.jpg" />
+<p><img src="./images/hb-partial-key-scans.jpg" alt="hb-partial-key-scans.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-org64a3d82">
-<h2 id="org64a3d82"><span class="section-number-2">20</span> Sequential Keys</h2>
+<section id="slide-orgd8b8339">
+<h2 id="orgd8b8339"><span class="section-number-2">20</span> Sequential Keys</h2>
 <p>
-&lt;timestamp&gt;&lt;more key&gt;: {CF: {CQ: {TS : Val}}}
+&lt;timestamp&gt;&lt;more key&gt;: {CF: {CQ: {TS : Val}}}<br />
 </p>
 <ul>
-<li>Region存在热点： 很麻烦！</li>
-<li>可以尝试以下方法：
+<li>Region存在热点： 很麻烦！<br /></li>
+<li>可以尝试以下方法：<br />
 <ul>
-<li>盐化(Salting)
+<li>盐化(Salting)<br />
 <ul>
-<li>在&lt;timestamp&gt;前添加离散化值</li>
-<li>对行进行分桶</li>
+<li>在&lt;timestamp&gt;前添加离散化值<br /></li>
+<li>对行进行分桶<br /></li>
 
 </ul></li>
-<li>key字段 交换/提升
+<li>key字段 交换/提升<br />
 <ul>
-<li>将&lt;more key&gt;放到时间戳前面</li>
+<li>将&lt;more key&gt;放到时间戳前面<br /></li>
 
 </ul></li>
-<li>随机化
+<li>随机化<br />
 <ul>
-<li>将&lt;timestamp&gt;移出row key</li>
+<li>将&lt;timestamp&gt;移出row key<br /></li>
 
 </ul></li>
 
@@ -384,52 +384,45 @@
 </section>
 </section>
 <section>
-<section id="slide-org71bffbf">
-<h2 id="org71bffbf"><span class="section-number-2">21</span> 盐化</h2>
+<section id="slide-org0a19252">
+<h2 id="org0a19252"><span class="section-number-2">21</span> 盐化</h2>
 <ul>
-<li>对row keys添加前缀来离散化</li>
-<li>使用通用的或数字前缀</li>
-<li>使用取模操作让row keys在各regionServers间分布</li>
-<li>强制将共性数据相互靠近，方便scaning 或 Mapreduce处理</li>
+<li>对row keys添加前缀来离散化<br /></li>
+<li>使用通用的或数字前缀<br /></li>
+<li>使用取模操作让row keys在各regionServers间分布<br /></li>
+<li>强制将共性数据相互靠近，方便scaning 或 Mapreduce处理<br />
+0_rowkey1, 1_rowkey2, 2_rowkey3<br />
+0_rowkey4, 1_rowkey5, 2_rowkey6<br /></li>
+<li>先按prefix排序<br />
+0_rowkey1<br />
+0_rowkey4<br />
+1_rowkey2<br />
+1_rowkey5<br />
+&#x2026;<br /></li>
 
 </ul>
-<p>
-0<sub>rowkey1</sub>, 1<sub>rowkey2</sub>, 2<sub>rowkey3</sub>
-0<sub>rowkey4</sub>, 1<sub>rowkey5</sub>, 2<sub>rowkey6</sub>
-</p>
-<ul>
-<li>先按prefix排序</li>
-
-</ul>
-<p>
-0<sub>rowkey1</sub>
-0<sub>rowkey4</sub>
-1<sub>rowkey2</sub>
-1<sub>rowkey5</sub>
-&#x2026;
-</p>
 
 </section>
 </section>
 <section>
-<section id="slide-org261dd93">
-<h2 id="org261dd93"><span class="section-number-2">22</span> Hashing vs. Sequential Keys</h2>
+<section id="slide-org3c6e4dd">
+<h2 id="org3c6e4dd"><span class="section-number-2">22</span> Hashing vs. Sequential Keys</h2>
 <ul>
-<li>使用hash达到最佳分布
+<li>使用hash达到最佳分布<br />
 <ul>
-<li>使用例如MD5重新创建key
+<li>使用例如MD5重新创建key<br />
 <ul>
-<li>key = MD5(customerID)</li>
+<li>key = MD5(customerID)<br /></li>
 
 </ul></li>
-<li>不利于范围scan</li>
+<li>不利于范围scan<br /></li>
 
 </ul></li>
 
-<li>使用sequential keys保证局部性
+<li>使用sequential keys保证局部性<br />
 <ul>
-<li>利用块缓存</li>
-<li>可能会使一台服务器负担过重，但可以通过在区域较小的情况下盐化或分割区域来避免</li>
+<li>利用块缓存<br /></li>
+<li>可能会使一台服务器负担过重，但可以通过在区域较小的情况下盐化或分割区域来避免<br /></li>
 
 </ul></li>
 
@@ -438,58 +431,30 @@
 </section>
 </section>
 <section>
-<section id="slide-org7361e04">
-<h2 id="org7361e04"><span class="section-number-2">23</span> Key 设计</h2>
+<section id="slide-org25eb9b1">
+<h2 id="org25eb9b1"><span class="section-number-2">23</span> Key 设计</h2>
 
 <div class="figure">
-<p><img src="./images/hb-key-degign.jpg" alt="hb-key-degign.jpg" />
+<p><img src="./images/hb-key-degign.jpg" alt="hb-key-degign.jpg" /><br />
 </p>
 </div>
 
 </section>
 </section>
 <section>
-<section id="slide-orgaf7e85c">
-<h2 id="orgaf7e85c"><span class="section-number-2">24</span> Key设计总结</h2>
+<section id="slide-org689e116">
+<h2 id="org689e116"><span class="section-number-2">24</span> Key设计总结</h2>
 <ul>
-<li>根据访问模式，选择顺序key或随机key</li>
-<li>常常需要将两者结合使用
+<li>根据访问模式，选择顺序key或随机key<br /></li>
+<li>常常需要将两者结合使用<br />
 <ul>
-<li>克服架构的局限行</li>
+<li>克服架构的局限行<br /></li>
 
 </ul></li>
-<li>不是哪一种不好
+<li>不是哪一种不好<br />
 <ul>
-<li>对sequential keys 使用bulk导入然后读取访问</li>
-<li>随机key更适合随机访问模式</li>
-
-</ul></li>
-
-</ul>
-
-</section>
-</section>
-<section>
-<section id="slide-org8b08559">
-<h2 id="org8b08559"><span class="section-number-2">25</span> Key 设计</h2>
-<ul>
-<li>反向域名(Reversed Domains)
-<ul>
-<li>例如："com.jd.jdd", "com.jd.erp"</li>
-<li>设法将相同站点的页面就近放置，这样HBase可以有效扫描已按key排序的块</li>
-
-</ul></li>
-<li>Domain Row Key = 
-MD5(Reversed Domain) + Reversed Domain
-<ul>
-<li>为了负载均衡， rowkey 用MD5 哈希开头使key在各region间随机分布</li>
-<li>只哈希映射每个站点的分组域名(如果需要也可以映射子域名)</li>
-
-</ul></li>
-<li>URL Row Key =
-MD5(Reversed Domain) + Reversed Domain + URL ID
-<ul>
-<li>重复利用URL ID的唯一性</li>
+<li>对sequential keys 使用bulk导入然后读取访问<br /></li>
+<li>随机key更适合随机访问模式<br /></li>
 
 </ul></li>
 
@@ -498,43 +463,77 @@ MD5(Reversed Domain) + Reversed Domain + URL ID
 </section>
 </section>
 <section>
-<section id="slide-org67c8ab2">
-<h2 id="org67c8ab2"><span class="section-number-2">26</span> 总结</h2>
+<section id="slide-org41d0629">
+<h2 id="org41d0629"><span class="section-number-2">25</span> Key 设计</h2>
 <ul>
-<li>根据使用场景来设计
-— 读， 写，还是两者都有？</li>
-<li>避免热点</li>
-<li>考虑使用 IDs 取代全文</li>
-<li>利用好列族与HFile间的关系</li>
-<li>移动明细到适当的位置
+<li>反向域名(Reversed Domains)<br />
 <ul>
-<li>组合Key</li>
-<li>列修饰符</li>
+<li>例如："com.jd.jdd", "com.jd.erp"<br /></li>
+<li>设法将相同站点的页面就近放置，这样HBase可以有效扫描已按key排序的块<br /></li>
+
+</ul></li>
+<li>Domain Row Key =<br />
+MD5(Reversed Domain) + Reversed Domain<br />
+<ul>
+<li>为了负载均衡， rowkey 用MD5 哈希开头使key在各region间随机分布<br /></li>
+<li>只哈希映射每个站点的分组域名(如果需要也可以映射子域名)<br /></li>
+
+</ul></li>
+<li>URL Row Key =<br />
+MD5(Reversed Domain) + Reversed Domain + URL ID<br />
+<ul>
+<li>重复利用URL ID的唯一性<br /></li>
+
+</ul></li>
+
+</ul>
+
+</section>
+</section>
+<section>
+<section id="slide-orgbc34db5">
+<h2 id="orgbc34db5"><span class="section-number-2">26</span> 总结</h2>
+<ul>
+<li>根据使用场景来设计<br />
+— 读， 写，还是两者都有？<br /></li>
+<li>避免热点<br /></li>
+<li>考虑使用 IDs 取代全文<br /></li>
+<li>利用好列族与HFile间的关系<br /></li>
+<li>移动明细到适当的位置<br />
+<ul>
+<li>组合Key<br /></li>
+<li>列修饰符<br /></li>
 
 </ul></li>
 
 </ul>
 </section>
-<section id="slide-org67c8ab2-split">
+<section id="slide-orgbc34db5-split">
 
 <h2><span class="section-number-2">26</span> 总结</h2>
 
 <ul>
-<li>Schema设计是一下各项的组合：
+<li>Schema设计是一下各项的组合：<br />
 <ul>
-<li>键(keys)的设计(行 和 列)</li>
-<li>按列族分离数据</li>
-<li>选择压缩和块大小</li>
+<li>键(keys)的设计(行 和 列)<br /></li>
+<li>按列族分离数据<br /></li>
+<li>选择压缩和块大小<br /></li>
 
 </ul></li>
-<li>大多数系统需要类似的技术来扩展
+<li>大多数系统需要类似的技术来扩展<br />
 <ul>
-<li>加索引，数据分区，一致性哈希</li>
+<li>加索引，数据分区，一致性哈希<br /></li>
 
 </ul></li>
-<li>DenormalizaFon, DuplicaFon, and Intelligent Keys (DDI)</li>
+<li>DenormalizaFon, DuplicaFon, and Intelligent Keys (DDI)<br /></li>
 
 </ul>
+
+</section>
+</section>
+<section>
+<section id="slide-org0414c42">
+<h2 id="org0414c42"><span class="section-number-2">27</span> THANKS</h2>
 </section>
 </section>
 </div>
