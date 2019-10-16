@@ -1,0 +1,216 @@
+#+Title: HBase Schema设计
+#+Author: 丁敬恩
+#+Email: dingjingen@jd.com
+
+#+REVEAL_INIT_OPTIONS: width:1200, height:800, margin: 0.1, minScale:0.2, maxScale:2.5, transition:'cube'
+#+OPTIONS: toc:nil
+#+OPTIONS: author:nil
+#+OPTIONS: date:nil
+#+REVEAL_THEME: moon
+#+REVEAL_HLEVEL: 2
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Org-Reveal Introduction.">
+#+REVEAL_POSTAMBLE: <p> Created by yjwen. </p>
+#+REVEAL_PLUGINS: (markdown notes)
+#+REVEAL_EXTRA_CSS: ./local.css
+#+LATEX_HEADER: \usepackage{ctex}
+#+LATEX_COMPILER: xelatex
+
+* 提纲
+  - HBase架构介绍
+  - Schema 设计
+  - 示例
+  - 总结
+
+* 概要
+  - Schema设计至关重要
+  - 而且必做不可
+  - 体现HBase系统架构和实现的“特性”
+  - 与存储层密切关联
+
+* 配置层次
+[[./images/hb-osi.jpg]]
+
+* HBase架构
+[[./images/hb-arch.jpg]]
+
+* HBase架构
+- HBase使用HDFS作为可靠存储层
+  - 处理校验和，多份冗余，故障恢复
+- 支持原生Java API，REST，Thrift, Avro网关
+- Master 管理集群
+- RegionServer 管理数据
+- Zookeeper作为中枢神经系统
+  - HBase至关重要
+  - 引导并协调集群
+
+* 自动分片(Auto Sharding)
+[[./images/hb-auto-sharding.jpg]]
+
+* 分布
+[[./images/hb-distribution.jpg]]
+
+* 自动分片和分布
+- HBase以Region做为扩展单位
+- 行是已排序，连续范围的
+- 在各RegionServer间"随机"分布
+- 因负载均衡和故障恢复在regionServer间迁移
+- 随着数据增长通过自动或手动分裂的方式进行扩展
+- 容量是影响集群节点数与每个节点region个数的唯一因素
+
+* 列族(Column Families)
+[[./images/hb-cf.jpg]]
+
+* 存储分离
+- 列族允许数据分离
+  - 用在列式数据库来做仅列级别的快速分析性查询
+  - 允许依据数据内容类型选取不同的压缩方式
+- 根据访问模式分离信息
+- 数据存放在一个或多个HFile存储文件(StoreFile)里
+
+* 布隆过滤器(Bloom Filter)
+- 布隆过滤器在HFile持久化的时候生成
+  - 存放在每个HFile的尾部
+  - 使用内存进行加载
+- 允许row或row+column级别的检查
+- 可以在读的时候过滤掉整个文件
+  - 对已分组数据效果显著
+- 在大量key不存在的读取场景也很有用
+#+REVEAL: split:t
+[[./images/hb-bloom-filter.jpg]]
+
+* Key 基数
+[[./images/hb-key-cardinality.jpg]]
+#+REVEAL: split:t
+- 使用行键可获得最佳性能
+- 限制时间范围的读取可以跳过存储文件
+  - 布隆过滤器也可以
+- 选定列族降低扫描的数据量
+- 基于纯值的过滤是全表扫描
+  - 使用过滤器往往也需要全表扫描，但可降低网络流量
+
+* 折叠，存储和移位 
+[[./images/hb-fold-store-shift.jpg]]
+#+REVEAL: split:t
+
+- 逻辑布局和物理布局不匹配
+- 所有值通过全坐标系来存储，
+  包括： 行键，列族，列修饰符，时间戳
+- 列被折叠成“行每列”
+- NULL无需存储
+- 在折叠表里多版本对应多行
+
+* Key/Table 设计
+- 获得最佳性能至关重要
+  - 为什么我需要知道？ 只有在对列建立索引并且查询计划确定后，RDBMS才能正常工作
+- 不支持二级索引，只能使用行键或列名排序
+- 将多级索引变单级
+  - 依合理的架构和并将分散在整个集群里来构造一个大表所以表现很好
+
+* DDI
+- 代表Denormalization, Duplication and Intelligent Keys
+- 需要克服架构的短板
+- Denormalization --> 替换 JOINS 操作
+- Duplication --> 为读而设计
+- Intelligent Keys --> 实现索引和排序，优化读性能
+
+* 预物化 Everything
+- 尽可能保证一个客户请求读取一次
+- 如果不行的话也保证最低的次数
+- 读耗时在10毫秒(缓存未命中)内和 1毫秒内(缓存命中)
+- 用MapReduce做计算以批的方式读
+- 实时存储和合并更新
+- 座右铭：“为读而设计”
+
+* 高条 vs 平宽表
+- 行不可分割
+  - 可能一行占一个region
+- 存储印迹相同
+- 将更多的细节放到row key
+  - 有时仅虚拟列
+  - 利用partial key scan
+- Scan使用高表，Get使用宽表
+  - 仅支持行级原子性
+
+* 示例： Mail Inbox
+[[./images/hb-example-mail-box.jpg]]
+
+* Partial Key Scans
+[[./images/hb-partial-key-scans.jpg]]
+
+* Sequential Keys
+ <timestamp><more key>: {CF: {CQ: {TS : Val}}}
+- Region存在热点： 很麻烦！
+- 可以尝试以下方法：
+  - 盐化(Salting)
+    - 在<timestamp>前添加离散化值
+    - 对行进行分桶
+  - key字段 交换/提升
+    - 将<more key>放到时间戳前面
+  - 随机化
+    - 将<timestamp>移出row key
+
+* 盐化
+- 对row keys添加前缀来离散化
+- 使用通用的或数字前缀
+- 使用取模操作让row keys在各regionServers间分布
+- 强制将共性数据相互靠近，方便scaning 或 Mapreduce处理
+0_rowkey1, 1_rowkey2, 2_rowkey3
+0_rowkey4, 1_rowkey5, 2_rowkey6
+- 先按prefix排序
+0_rowkey1
+0_rowkey4
+1_rowkey2
+1_rowkey5
+...
+
+* Hashing vs. Sequential Keys
+- 使用hash达到最佳分布
+  - 使用例如MD5重新创建key
+    - key = MD5(customerID)
+  - 不利于范围scan
+
+- 使用sequential keys保证局部性
+  - 利用块缓存
+  - 可能会使一台服务器负担过重，但可以通过在区域较小的情况下盐化或分割区域来避免
+
+* Key 设计
+[[./images/hb-key-degign.jpg]]
+
+* Key设计总结
+- 根据访问模式，选择顺序key或随机key
+- 常常需要将两者结合使用
+  - 克服架构的局限行
+- 不是哪一种不好
+  - 对sequential keys 使用bulk导入然后读取访问
+  - 随机key更适合随机访问模式
+
+* Key 设计
+- 反向域名(Reversed Domains)
+  - 例如："com.jd.jdd", "com.jd.erp"
+  - 设法将相同站点的页面就近放置，这样HBase可以有效扫描已按key排序的块
+- Domain Row Key = 
+  MD5(Reversed Domain) + Reversed Domain
+  - 为了负载均衡， rowkey 用MD5 哈希开头使key在各region间随机分布
+  - 只哈希映射每个站点的分组域名(如果需要也可以映射子域名)
+- URL Row Key =
+   MD5(Reversed Domain) + Reversed Domain + URL ID
+  - 重复利用URL ID的唯一性
+
+* 总结
+- 根据使用场景来设计
+  — 读， 写，还是两者都有？
+- 避免热点
+- 考虑使用 IDs 取代全文
+- 利用好列族与HFile间的关系
+- 移动明细到适当的位置
+  - 组合Key
+  - 列修饰符
+#+REVEAL: split:t
+
+- Schema设计是一下各项的组合：
+  - 键(keys)的设计(行 和 列)
+  - 按列族分离数据
+  - 选择压缩和块大小
+- 大多数系统需要类似的技术来扩展
+  - 加索引，数据分区，一致性哈希
+- DenormalizaFon, DuplicaFon, and Intelligent Keys (DDI)
